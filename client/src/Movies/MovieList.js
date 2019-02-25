@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class MovieList extends Component {
@@ -34,10 +35,11 @@ export default class MovieList extends Component {
 function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
-    <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
+    <Link to={`/movies/${movie.id}`}>
+      <div className="movie-card">
+        <h2>{title}</h2>
+        <div className="movie-director">
+          Director: <em>{director}</em>
       </div>
       <div className="movie-metascore">
         Metascore: <strong>{metascore}</strong>
@@ -49,6 +51,7 @@ function MovieDetails({ movie }) {
           {star}
         </div>
       ))}
-    </div>
+      </div>
+    </Link>
   );
 }
